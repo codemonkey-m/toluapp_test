@@ -11,6 +11,8 @@ public:
 	~Export() {}
 
 	void show(const char* p);
+
+	void empty();
 };
 
 Export* get_export_obj();

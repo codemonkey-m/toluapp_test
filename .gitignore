@@ -19,3 +19,6 @@
 /lua/tolua++/Release
 /lua/tolua++/x64
 /export/export.cpp
+/.tmp/Release
+/bin/toluapp_test_Win32_Release.pdb
+/bin/toluapp_test_Win32_Release.exe

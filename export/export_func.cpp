@@ -21,3 +21,8 @@ void Export::show(const char* p)
 {
 	std::cout << "来自lua的对象调用 " << p << endl;
 }
+
+void Export::empty()
+{
+
+}

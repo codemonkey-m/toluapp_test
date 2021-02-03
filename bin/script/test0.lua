@@ -16,3 +16,7 @@ function obj_call(obj)
 	ooo:show("lua从c++获取到的对象")
 	del_export_obj(ooo)
 end
+
+function empty_func(obj)
+	obj:empty()
+end

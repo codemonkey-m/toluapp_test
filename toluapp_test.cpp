@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <Windows.h>
 #include "tolua++.h"
 extern "C" {
 #include "lua.h"
@@ -89,6 +90,10 @@ const char* type_name(T& t) {
 	return s;
 }
 
+void void_func() {
+
+}
+
 template<typename T>
 void lua_push_obj(lua_State* L, T& t) {
 	tolua_pushusertype(L, &t, type_name(t));
@@ -103,7 +108,7 @@ int main()
 
 	lua_pushcfunction(m_pLua, ScriptCallErrorDispatcher);
 
-	if (luaL_dofile(m_pLua, "bin\\script\\test0.lua"))
+	if (luaL_dofile(m_pLua, "script\\test0.lua"))
 		bail(m_pLua);
 
 	Export ex;
@@ -117,9 +122,22 @@ int main()
 
 	cout << "来自lua的返回 " << lua_tonumber(m_pLua, -1) << endl;
 
+#define CNT 1000000
+	unsigned begin_tick = GetTickCount();
+	for (int i = 0; i < CNT; ++i) {
+		lua_getglobal(m_pLua, "empty_func");
+		//lua_push_obj(m_pLua, ex);
+		lua_pcall(m_pLua, 1, 1, -3);
+	}
+	cout << GetTickCount() - begin_tick << endl;
+
+	begin_tick = GetTickCount();
+	for (int i = 0; i < CNT; ++i) {
+		void_func();
+	}
+	cout << GetTickCount() - begin_tick << endl;
+
 	lua_close(m_pLua);
-
-
 	system("pause");
 	return 0;
 }
