@@ -3,3 +3,18 @@
 ################################################################################
 
 /.tmp/Debug
+/.vs/toluapp_test/v16
+/bin/toluapp_test_Win32_Debug.pdb
+/bin/toluapp_test_Win32_Debug.ilk
+/bin/toluapp_test_Win32_Debug.exe
+/bin/lua_test_Win32_Debug.pdb
+/bin/lua_test_Win32_Debug.ilk
+/bin/lua_test_Win32_Debug.exe
+/lua/.vs/build/v16
+/lua/lua-5.1/.vs/lua-5.1/v16
+/lua/lua-5.1/Debug
+/lua/lua-5.1/Release
+/lua/lua-5.1/x64
+/lua/tolua++/Debug
+/lua/tolua++/Release
+/lua/tolua++/x64

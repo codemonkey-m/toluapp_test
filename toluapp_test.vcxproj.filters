@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="toluapp_test.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="export\export.cpp">
+      <Filter>export</Filter>
+    </ClCompile>
+    <ClCompile Include="export\export_func.cpp">
+      <Filter>export</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="export\export_func.h">
+      <Filter>export</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="export\export.scp">
+      <Filter>export</Filter>
+    </None>
+    <None Include="bin\script\test1.lua">
+      <Filter>script</Filter>
+    </None>
+    <None Include="bin\script\test0.lua">
+      <Filter>script</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="export">
+      <UniqueIdentifier>{cae9bd23-5e6c-4d2a-b41b-8b9e98c6e80d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="script">
+      <UniqueIdentifier>{ae59f0ae-3650-4ae8-8dc8-b4067f8174a2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
