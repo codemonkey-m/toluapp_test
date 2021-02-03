@@ -18,3 +18,4 @@
 /lua/tolua++/Debug
 /lua/tolua++/Release
 /lua/tolua++/x64
+/export/export.cpp
