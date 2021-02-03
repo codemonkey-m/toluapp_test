@@ -68,17 +68,30 @@ int ScriptCallErrorDispatcher(lua_State* L)
 }
 
 template<typename T>
-const char* class_name(T& t) {
+const char* type_name(T& t) {
 	static char s[128] = { 0 };
 	strcpy_s(s, 128, typeid(t).name());
-	char* p = strchr(s, ' ');
-	strcpy_s(s, 128, ++p);
+	/**
+	 * int		int
+	 * int*		int *
+	 * class	class 类名
+	 * class*	class 类名 *
+	 */
+	static const char* cn = "class ";
+	char* p = strstr(s, cn);
+	if (p)
+		strcpy_s(s, 128, p + strlen(cn));
+
+	p = strchr(s, ' ');
+	if (p)
+		p[0] = NULL;
+
 	return s;
 }
 
 template<typename T>
 void lua_push_obj(lua_State* L, T& t) {
-	tolua_pushusertype(L, &t, class_name(t));
+	tolua_pushusertype(L, &t, type_name(t));
 }
 
 int main()
@@ -90,7 +103,7 @@ int main()
 
 	lua_pushcfunction(m_pLua, ScriptCallErrorDispatcher);
 
-	if(luaL_dofile(m_pLua, "bin\\script\\test0.lua"))
+	if (luaL_dofile(m_pLua, "bin\\script\\test0.lua"))
 		bail(m_pLua);
 
 	Export ex;
@@ -105,6 +118,7 @@ int main()
 	cout << "来自lua的返回 " << lua_tonumber(m_pLua, -1) << endl;
 
 	lua_close(m_pLua);
+
 
 	system("pause");
 	return 0;
